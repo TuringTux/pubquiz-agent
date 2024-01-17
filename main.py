@@ -20,5 +20,6 @@ llm = AzureChatOpenAI(
 while True:
     question = input(">>> ")
     response = llm.invoke(question)
+    # TODO Copy response to clipboard
     print(response.content)
 
