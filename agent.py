@@ -4,7 +4,7 @@ from tool_qa import tool_qa
 
 from llm import llm
 
-premade_tools = load_tools(["wolfram-alpha"])
+premade_tools = load_tools(["wolfram-alpha", "wikipedia"])
 our_tools = [tool_qa]
 tools = premade_tools + our_tools
 
@@ -13,7 +13,7 @@ agent = initialize_agent(
     tools=tools,
     llm=llm,
     agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION,
-    verbose=True,
+    verbose=False,
     return_intermediate_steps=False,
     handle_parsing_errors=True,
     agent_kwargs={
