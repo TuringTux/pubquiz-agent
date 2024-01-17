@@ -9,5 +9,5 @@ while True:
         break
 
     response = get_response(question)
-    pyperclip.copy(response)
+    pyperclip.copy(f"[Not the Spanish Inquizition] {response}")
     print(response)
