@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-from agent import agent
+from agent import get_response
 
 while True:
     try:
@@ -7,6 +7,6 @@ while True:
     except EOFError:
         break
 
-    response = agent.invoke(question)
+    response = get_response(question)
     # TODO Copy response to clipboard
-    print(response["output"])
+    print(response)

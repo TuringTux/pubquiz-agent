@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
 from example_questions import EXAMPLE_QUESTIONS
-from agent import agent
+from agent import get_response
 
 for question in EXAMPLE_QUESTIONS:
     print(f">>> {question}")
-    response = agent.invoke(question)
-    print(response["output"])
+    print(get_response(question))

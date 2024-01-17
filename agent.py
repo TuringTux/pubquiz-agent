@@ -22,3 +22,25 @@ agent = initialize_agent(
         'prefix': PREFIX
     }
 )
+
+
+def _is_unknown(response):
+    response_lower = response.lower()
+    return "unknown" in response_lower or "unbekannt" in response_lower or "i don't know" in response_lower
+
+
+def get_response(question):
+    retry_times = 3
+    response = None
+
+    while retry_times > 0:
+        try:
+            response = agent.invoke(question)["output"]
+            if not _is_unknown(response):
+                return response
+        except Exception:
+            pass
+
+        retry_times -= 1
+
+    return response
