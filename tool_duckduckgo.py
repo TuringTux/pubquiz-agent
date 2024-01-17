@@ -4,6 +4,6 @@ ddg = DuckDuckGoSearchRun()
 
 tool_duckduckgo = Tool.from_function(
     func = ddg.run,
-    name = "DuckDuckGo Search",
-    description = "Search DuckDuckGo for a query abount current events."
+    name = "Search the web with DuckDuckGo",
+    description = "Search the web with DuckDuckGo. Use this when you have questions about recent events, or real-world locations. Please double check this with your knowledge, if it seems wrong, use another tool or your knowledge."
 )
