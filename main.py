@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 from agent import get_response
+import pyperclip
 
 while True:
     try:
