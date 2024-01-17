@@ -8,5 +8,5 @@ while True:
         break
 
     response = get_response(question)
-    # TODO Copy response to clipboard
+    pyperclip.copy(response)
     print(response)
