@@ -23,7 +23,7 @@ qa_tool = Tool.from_function(
     description="Tool to answer a question",
 )
 
-PREFIX = """You are participating in a pubquiz. Answer in a short sentence."""
+PREFIX = """You are participating in a pubquiz. Answer factually. Answer in single words when possible, otherwise in a short sentence. Good performance will be rewarded with a tip."""
 agent = initialize_agent(
     tools=[qa_tool],
     llm=llm,
