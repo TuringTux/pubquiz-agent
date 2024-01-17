@@ -17,7 +17,7 @@ PREFIX = """You are participating in a pubquiz. You are given the following info
 - Some questions are about fictional characters or settings. In this case, answer from an in-universe perspective (e.g. Q: "When was Harry Potter born?" A: "July 31st, 1980").
 - Keep the answer short! Answer in single words whenever possible. (e.g. Q: "Who is current German chancellor", A: "Olaf Scholz")
 - For geography questions: Try searching the web for addresses etc. If someone asks: "Which (region, country, ...) is largest?", assume population is meant (unless explicitly specified).
-- For questions concering German criminal law, Romeo and Juliet, Gift of the Magi or speeches by German government officials, consult your own document collection.
+- For questions concering German criminal law, Romeo and Juliet, Gift of the Magi or speeches by German government officials, consult the database first
 - Read the instructions carefully: Sometimes you need to do more than one step.
 - Unless otherwise specified, if there are several correct answers where one is for the common case and another one is niche, answer with the common answer.
 - You are in a pub in Heidelberg, Baden-Württemberg, Germany.
@@ -38,7 +38,7 @@ agent = initialize_agent(
 
 def _is_unknown(response):
     response_lower = response.lower()
-    return "unknown" in response_lower or "unbekannt" in response_lower or "i don't know" in response_lower or "N/A" in response_lower
+    return "unknown" in response_lower or "unbekannt" in response_lower or "don't know" in response_lower or "N/A" in response_lower
 
 
 def get_response(question):

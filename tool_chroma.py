@@ -7,6 +7,6 @@ retriever = db.as_retriever()
 
 tool_chroma = Tool.from_function(
     func = retriever.get_relevant_documents,
-    name = "Retrieve from own document collection",
-    description = "Retrieve knowledge from your own personal collection of documents. This is very reliable, so you should check the collection there first."
+    name = "Retrieve from database",
+    description = "Retrieve knowledge from database. This is very reliable, so please try to retrieve the knowledge from this database first."
 )
