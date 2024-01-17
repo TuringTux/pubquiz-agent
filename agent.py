@@ -6,7 +6,7 @@ from tool_chroma import tool_chroma
 
 from llm import llm
 
-premade_tools = load_tools(["wolfram-alpha"])
+premade_tools = load_tools(["wolfram-alpha", "google-serper"])
 our_tools = [tool_qa, tool_chroma]
 tools = premade_tools + our_tools
 
@@ -14,8 +14,10 @@ PREFIX = """You are participating in a pubquiz. You are given the following info
 
 - Answer factually. If you do not know the answer, try using and combining multiple tools.
 - If you cannot get the answer using any tool, guess.
-- Some questions are about fictional characters or settings. In this case, answer from an in-universe perspective (e.g. Q: "When was Harry Potter born?" A: "July 31st, 1980")
+- Some questions are about fictional characters or settings. In this case, answer from an in-universe perspective (e.g. Q: "When was Harry Potter born?" A: "July 31st, 1980").
 - Keep the answer short! Answer in single words whenever possible. (e.g. Q: "Who is current German chancellor", A: "Olaf Scholz")
+- For geography questions: Try searching the web for addresses etc. If someone asks: "Which (region, country, ...) is largest?", assume population is meant (unless explicitly specified).
+- Read the instructions carefully: Sometimes you need to do more than one step.
 - Unless otherwise specified, if there are several correct answers where one is for the common case and another one is niche, answer with the common answer.
 - You are in a pub in Heidelberg, Baden-Württemberg, Germany.
 
