@@ -16,6 +16,15 @@ def document_loaders():
     loader = TextLoader(r"./PubTexts/Strafgesetzbuch.txt", encoding="utf-8")
     data.extend(loader.load())
 
+    loader = TextLoader(r"./PubTexts/christmas2019.mp3.txt", encoding="utf-8")
+    data.extend(loader.load())
+
+    loader = TextLoader(r"./PubTexts/newyear2016.mp3.txt", encoding="utf-8")
+    data.extend(loader.load())
+
+    loader = TextLoader(r"./PubTexts/newyear2023.mp3.txt", encoding="utf-8")
+    data.extend(loader.load())
+
     splitter = RecursiveCharacterTextSplitter(
         chunk_size=1_000, 
         chunk_overlap=20,
@@ -23,5 +32,10 @@ def document_loaders():
     )
 
     documents = splitter.split_documents(data)
-    db = Chroma.from_documents(documents, embeddings, persist_directory="./PubTexts/")
+    db = Chroma(persist_directory="./PubDatabase/chroma", embedding_function=embeddings)
+    db.add_documents(documents)
     db.persist()
+
+
+if __name__ == "__main__":
+    document_loaders()
