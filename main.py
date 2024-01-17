@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import os
 from langchain.chat_models import AzureChatOpenAI
+from langchain.agents import initialize_agent, AgentType
 
 
 from dotenv import load_dotenv
@@ -17,9 +18,25 @@ llm = AzureChatOpenAI(
     azure_endpoint=azure_endpoint,
 )
 
+PREFIX = """You are participating in a pubquiz. Answer in a short sentence."""
+agent = initialize_agent(
+    tools=[],
+    llm=llm,
+    agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION,
+    verbose=True,
+    return_intermediate_steps=True,
+    handle_parsing_errors=True,
+    agent_kwargs={
+        'prefix': PREFIX
+    }
+)
+
 while True:
-    question = input(">>> ")
-    response = llm.invoke(question)
+    try:
+        question = input(">>> ")
+    except EOFError:
+        break
+
+    response = agent.invoke(question)
     # TODO Copy response to clipboard
     print(response.content)
-
